@@ -6,5 +6,4 @@ $ROOT/docker/env.sh
 docker-compose \
 --file $ROOT/docker/docker-compose.yaml \
 --project-directory $ROOT \
-run --rm log-api /bin/bash
-# TODO --publish?
+up
