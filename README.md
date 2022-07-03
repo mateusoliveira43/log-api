@@ -1,21 +1,19 @@
-# Python project template
+# Log API
 
-[![Continuos Integration](https://github.com/mateusoliveira43/python-project-template/actions/workflows/ci.yml/badge.svg)](https://github.com/mateusoliveira43/python-project-template/actions)
-[![Continuos Delivery](https://github.com/mateusoliveira43/python-project-template/actions/workflows/cd.yml/badge.svg)](https://github.com/mateusoliveira43/python-project-template/actions)
+[![Continuos Integration](https://github.com/mateusoliveira43/log-api/actions/workflows/ci.yml/badge.svg)](https://github.com/mateusoliveira43/log-api/actions)
+[![Continuos Delivery](https://github.com/mateusoliveira43/log-api/actions/workflows/cd.yml/badge.svg)](https://github.com/mateusoliveira43/log-api/actions)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-Template for a Python project. Check the project's documentation [here](https://mateusoliveira43.github.io/python-project-template/).
+Technical challenge for selective process.
+
+Since the repository is private, it's documentation could not be deployed to GitHub pages, but the structure to do it is all set in [`.github/workflows/cd.yml`](.github/workflows/cd.yml) file.
 
 # Requirements
 
 To run the project, it is necessary the following tools:
-
-- [Poetry](https://python-poetry.org/docs/#installation)
-
-Or
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -24,12 +22,29 @@ Or
 
 Follow one of the next sections.
 
-## Poetry
+## Start and testing with CURL
 
-To install project dependencies and create a virtual environment, run
+To start the service, run
 ```
-poetry install
+docker/up.sh
 ```
+
+To retrieve the response from an endpoint using [CURL](https://curl.se/), run
+```
+curl http://localhost:3000/endpoint
+```
+TODO To check the available endpoints, access `fastapi documentation`.
+
+To stop the service, run `CTRL+D` or `exit`.
+
+## Development
+
+To connect to container's shell, run
+```
+docker/run.sh
+```
+
+To exit the container's shell, run `CTRL+D` or `exit`.
 
 To activate virtual environment, run
 ```
@@ -37,16 +52,6 @@ poetry shell
 ```
 
 To deactivate virtual environment, run `CTRL+D` or `exit`.
-
-## Docker
-
-To connect to container's shell, run
-```
-docker/run.sh
-```
-and run `poetry shell` to activate virtual environment.
-
-To exit the container's shell, run `CTRL+D` or `exit`.
 
 To run Dockerfile linter, run
 ```
@@ -58,7 +63,7 @@ To remove the project's containers, images, volumes and networks, run
 docker/down.sh
 ```
 
-To change Docker configuration, change the variables in `.env` file.
+To change service/Docker configuration, change the variables in `.env` file.
 
 # Quality
 
@@ -152,7 +157,7 @@ To generate Python documentation, run
 sphinx-apidoc --module-first --private --output-dir docs/modules source
 sphinx-build -v -n docs public
 ```
-To see the documentation , check `public/index.html`.
+To check the documentation, open `public/index.html` in a browser.
 
 Sphinx configuration in [`docs/conf.py`](docs/conf.py) file.
 

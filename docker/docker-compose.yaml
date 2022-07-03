@@ -1,20 +1,23 @@
 services:
-  python-project-template:
+  log-api:
     container_name: ${PROJECT_NAME}
     image: ${PROJECT_NAME}
-    user: ${PROJECT_NAME}
+    user: ${USER_NAME}
     hostname: docker
     working_dir: ${WORK_DIR}
+    entrypoint: ["poetry", "run"]
+    command: ["python", "--version"]
     build:
       context: ./
       dockerfile: ./docker/Dockerfile
       args:
         USER_ID: ${USER_ID}
         GROUP_ID: ${GROUP_ID}
-        PROJECT_NAME: ${PROJECT_NAME}
+        USER_NAME: ${USER_NAME}
         WORK_DIR: ${WORK_DIR}
     volumes:
       - type: bind
         source: ./
         target: ${WORK_DIR}/
       - ${WORK_DIR}/.venv
+  # TODO database
