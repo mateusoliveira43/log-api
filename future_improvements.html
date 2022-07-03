@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Module Index &mdash; Log API  documentation</title>
+  <title>Future improvements &mdash; Log API  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -18,13 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
- 
-
-    <script>
-      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
-    </script>
-
-
+    <link rel="next" title="source" href="modules/modules.html" />
+    <link rel="prev" title="Architecture" href="architecture.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,9 +38,9 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="future_improvements.html">Future improvements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Future improvements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules/modules.html">source</a></li>
 </ul>
 
@@ -62,8 +58,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Python Module Index</li>
+      <li>Future improvements</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/future_improvements.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,28 +68,24 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-   <h1>Python Module Index</h1>
-
-   <div class="modindex-jumpbox">
-   <a href="#cap-s"><strong>s</strong></a>
-   </div>
-
-   <table class="indextable modindextable">
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-s"><td></td><td>
-       <strong>s</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="modules/source.html#module-source"><code class="xref">source</code></a></td><td>
-       <em></em></td></tr>
-   </table>
+  <section id="future-improvements">
+<h1>Future improvements<a class="headerlink" href="#future-improvements" title="Permalink to this heading"></a></h1>
+<p>For simplicity, the following features where not added to the service:</p>
+<p>TODO give access to reviewers
+TODO how authentication will work
+- The route for creating new users does not required authentication. In a production version of the service, only high level users should be able to create new users.
+- There is no <code class="docutils literal notranslate"><span class="pre">PATCH</span></code> route to updating a existing customer.
+- There is no <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> route to delete a existing customer.
+- There are no filters when listing the events, except for customer.</p>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules/modules.html" class="btn btn-neutral float-right" title="source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
