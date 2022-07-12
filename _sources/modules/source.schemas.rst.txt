@@ -1,0 +1,47 @@
+source.schemas package
+======================
+
+.. automodule:: source.schemas
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+source.schemas.customer module
+------------------------------
+
+.. automodule:: source.schemas.customer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.schemas.event module
+---------------------------
+
+.. automodule:: source.schemas.event
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.schemas.message module
+-----------------------------
+
+.. automodule:: source.schemas.message
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.schemas.user module
+--------------------------
+
+.. automodule:: source.schemas.user
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

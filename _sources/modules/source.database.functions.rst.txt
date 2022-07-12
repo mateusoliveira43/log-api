@@ -1,0 +1,38 @@
+source.database.functions package
+=================================
+
+.. automodule:: source.database.functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+source.database.functions.customer module
+-----------------------------------------
+
+.. automodule:: source.database.functions.customer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.database.functions.event module
+--------------------------------------
+
+.. automodule:: source.database.functions.event
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.database.functions.user module
+-------------------------------------
+
+.. automodule:: source.database.functions.user
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

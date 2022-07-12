@@ -6,3 +6,34 @@ source package
    :undoc-members:
    :show-inheritance:
    :private-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   source.database
+   source.routes
+   source.schemas
+
+Submodules
+----------
+
+source.\_\_main\_\_ module
+--------------------------
+
+.. automodule:: source.__main__
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.settings module
+----------------------
+
+.. automodule:: source.settings
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

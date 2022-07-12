@@ -1,0 +1,28 @@
+source.database package
+=======================
+
+.. automodule:: source.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   source.database.functions
+
+Submodules
+----------
+
+source.database.models module
+-----------------------------
+
+.. automodule:: source.database.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

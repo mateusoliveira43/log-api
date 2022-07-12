@@ -1,0 +1,38 @@
+source.routes package
+=====================
+
+.. automodule:: source.routes
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+source.routes.customer module
+-----------------------------
+
+.. automodule:: source.routes.customer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.routes.event module
+--------------------------
+
+.. automodule:: source.routes.event
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.routes.user module
+-------------------------
+
+.. automodule:: source.routes.user
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
