@@ -31,9 +31,19 @@ docker/up.sh
 
 To retrieve the response from an endpoint using [CURL](https://curl.se/), run
 ```
-curl http://localhost:3000/endpoint
+curl http://localhost:3000/<endpoint>
 ```
-TODO To check the available endpoints, access `fastapi documentation`.
+For `POST` endpoints, run
+```
+curl -X POST \
+-d "key=value" \
+-d "key=value" \
+http://localhost:3000/<endpoint>
+```
+For endpoints that require authentication, is required to pass the flag `-H "Authorization: Bearer <token>"` as well.
+
+To check the available endpoints, access log-api documentation [http://localhost:3000/docs](http://localhost:3000/docs).
+
 
 To stop the service, run `CTRL+D` or `exit`.
 

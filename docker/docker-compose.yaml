@@ -1,12 +1,28 @@
 services:
+  log-database:
+    container_name: log-database
+    image: postgres:14.4
+    environment:
+      - POSTGRES_USER=${USER_NAME}
+      - POSTGRES_PASSWORD=${USER_NAME}
+      - POSTGRES_DB=log-database
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    volumes:
+      - ./database/tables.sql:/docker-entrypoint-initdb.d/tables.sql
+
   log-api:
-    container_name: ${PROJECT_NAME}
-    image: ${PROJECT_NAME}
+    depends_on:
+      - log-database
+    container_name: log-api
+    image: log-api
     user: ${USER_NAME}
     hostname: docker
     working_dir: ${WORK_DIR}
     entrypoint: ["poetry", "run"]
-    command: ["python", "--version"]
+    command: ["uvicorn", "source.__main__:log_api", "--host", "${API_HOST}", "--port", "${API_PORT}", "--reload"]
+    ports:
+      - ${API_PORT}:${API_PORT}
     build:
       context: ./
       dockerfile: ./docker/Dockerfile
@@ -20,4 +36,3 @@ services:
         source: ./
         target: ${WORK_DIR}/
       - ${WORK_DIR}/.venv
-  # TODO database
