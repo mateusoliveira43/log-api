@@ -31,7 +31,7 @@ docker/up.sh
 
 To retrieve the response from an endpoint using [CURL](https://curl.se/), run
 ```
-curl -H "Authorization: Bearer {token}" http://localhost:3000/<endpoint>
+curl http://localhost:3000/<endpoint>
 ```
 For `POST` endpoints, run
 ```
