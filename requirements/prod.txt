@@ -272,6 +272,6 @@ typing-extensions==4.2.0; python_version >= "3.7" and python_full_version >= "3.
 uvicorn==0.18.2; python_version >= "3.7" \
     --hash=sha256:c19a057deb1c5bb060946e2e5c262fc01590c6529c0af2c3d9ce941e89bc30e0 \
     --hash=sha256:cade07c403c397f9fe275492a48c1b869efd175d5d8a692df649e6e7e2ed8f4e
-zipp==3.8.0; python_version >= "3.7" and python_full_version < "3.0.0" and python_version < "3.8" or python_full_version >= "3.6.0" and python_version < "3.8" and python_version >= "3.7" \
+zipp==3.8.0; python_version >= "3.7" and python_version < "3.8" or python_full_version >= "3.6.0" and python_version >= "3.7" \
     --hash=sha256:c4f6e5bbf48e74f7a38e7cc5b0480ff42b0ae5178957d564d18932525d5cf099 \
     --hash=sha256:56bf8aadb83c24db6c4b577e13de374ccfb67da2078beba1d037c17980bf43ad
