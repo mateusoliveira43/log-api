@@ -7,6 +7,15 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
+fastapi = "^0.78.0"
+SQLAlchemy = "^1.4.39"
+uvicorn = "^0.18.2"
+psycopg2 = "^2.9.3"
+python-decouple = "^3.6"
+email-validator = "^1.2.1"
+PyJWT = "^2.4.0"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
+python-multipart = "^0.0.5"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.4"
