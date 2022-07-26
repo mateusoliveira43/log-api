@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="source.schemas package" href="source.schemas.html" />
-    <link rel="prev" title="source.database.functions package" href="source.database.functions.html" /> 
+    <link rel="prev" title="source.dependencies package" href="source.dependencies.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,6 +45,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="source.html">source package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="source.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="source.database.html">source.database package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.dependencies.html">source.dependencies package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">source.routes package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source.schemas.html">source.schemas package</a></li>
 </ul>
@@ -100,8 +101,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> (<em>EmailStr</em><em>, </em><em>optional</em>) – User’s email, by default Form(…)</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>email</strong> (<em>pydantic.networks.EmailStr</em>) – User’s email, by default Form(…)</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -120,8 +121,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>customer</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.customer.CustomerForm" title="source.schemas.customer.CustomerForm"><em>CustomerForm</em></a><em>, </em><em>optional</em>) – User’s email and password, by default Depends(CustomerForm.form)</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>customer</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.customer.CustomerForm" title="source.schemas.customer.CustomerForm"><em>CustomerForm</em></a>) – User’s email and password, by default Depends(CustomerForm.form)</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -140,8 +141,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> (<em>EmailStr</em><em>, </em><em>optional</em>) – User’s email, by default Form(…)</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>email</strong> (<em>pydantic.networks.EmailStr</em>) – User’s email, by default Form(…)</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -164,8 +165,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>event</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.event.EventForm" title="source.schemas.event.EventForm"><em>EventForm</em></a><em>, </em><em>optional</em>) – Customer email and event type, by default Depends(EventForm.form)</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>event</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.event.EventForm" title="source.schemas.event.EventForm"><em>EventForm</em></a>) – Customer email and event type, by default Depends(EventForm.form)</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -183,7 +184,7 @@
 <dd><p>List the events stored in the service endpoint.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p>
+<dd class="field-odd"><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>The events stored in the service.</p>
@@ -205,8 +206,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.user.UserForm" title="source.schemas.user.UserForm"><em>UserForm</em></a><em>, </em><em>optional</em>) – User’s email and password, by default Depends(UserForm.form)</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>user</strong> (<a class="reference internal" href="source.schemas.html#source.schemas.user.UserForm" title="source.schemas.user.UserForm"><em>UserForm</em></a>) – User’s email and password, by default Depends(UserForm.form)</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -216,7 +217,7 @@
 <dd class="field-odd"><p><a class="reference internal" href="source.schemas.html#source.schemas.message.Message" title="source.schemas.message.Message">Message</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>HTTPException</strong> – If email is already registered.</p>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If email is already registered.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -228,8 +229,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>user</strong> (<em>OAuth2PasswordRequestForm</em><em>, </em><em>optional</em>) – User’s username (email) and password, by default Depends()</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em><em>, </em><em>optional</em>) – Service database session, by default Depends(get_database_session)</p></li>
+<li><p><strong>user</strong> (<em>OAuth2PasswordRequestForm</em>) – User’s username (email) and password, by default Depends()</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session, by default Depends(get_database_session)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -248,7 +249,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="source.database.functions.html" class="btn btn-neutral float-left" title="source.database.functions package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="source.dependencies.html" class="btn btn-neutral float-left" title="source.dependencies package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="source.schemas.html" class="btn btn-neutral float-right" title="source.schemas package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

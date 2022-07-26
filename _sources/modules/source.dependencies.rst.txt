@@ -1,0 +1,29 @@
+source.dependencies package
+===========================
+
+.. automodule:: source.dependencies
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+Submodules
+----------
+
+source.dependencies.authentication module
+-----------------------------------------
+
+.. automodule:: source.dependencies.authentication
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:
+
+source.dependencies.database module
+-----------------------------------
+
+.. automodule:: source.dependencies.database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+   :private-members:

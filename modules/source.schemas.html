@@ -44,6 +44,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="source.html">source package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="source.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="source.database.html">source.database package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.dependencies.html">source.dependencies package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source.routes.html">source.routes package</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">source.schemas package</a></li>
 </ul>
@@ -114,8 +115,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>constr</em><em>, </em><em>optional</em>) – Customer name, by default Form(…)</p></li>
-<li><p><strong>email</strong> (<em>EmailStr</em><em>, </em><em>optional</em>) – Customer email, by default Form(…)</p></li>
+<li><p><strong>name</strong> (<em>constr</em>) – Customer name, by default Form(…)</p></li>
+<li><p><strong>email</strong> (<em>pydantic.networks.EmailStr</em>) – Customer email, by default Form(…)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -160,8 +161,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> (<em>EmailStr</em><em>, </em><em>optional</em>) – Customer associated to event email, by default Form(…)</p></li>
-<li><p><strong>type</strong> (<em>constr</em><em>, </em><em>optional</em>) – Type of the event, by default Form(…)</p></li>
+<li><p><strong>email</strong> (<em>pydantic.networks.EmailStr</em>) – Customer associated to event email, by default Form(…)</p></li>
+<li><p><strong>type</strong> (<em>constr</em>) – Type of the event, by default Form(…)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -307,8 +308,8 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>email</strong> (<em>EmailStr</em><em>, </em><em>optional</em>) – User email, by default Form(…)</p></li>
-<li><p><strong>password</strong> (<em>constr</em><em>, </em><em>optional</em>) – User password, by default Form(…)</p></li>
+<li><p><strong>email</strong> (<em>pydantic.networks.EmailStr</em>) – User email, by default Form(…)</p></li>
+<li><p><strong>password</strong> (<em>constr</em>) – User password, by default Form(…)</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

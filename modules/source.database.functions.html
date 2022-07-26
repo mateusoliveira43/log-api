@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="source.routes package" href="source.routes.html" />
+    <link rel="next" title="source.dependencies package" href="source.dependencies.html" />
     <link rel="prev" title="source.database package" href="source.database.html" /> 
 </head>
 
@@ -45,6 +45,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="source.html">source package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="source.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="source.database.html">source.database package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.dependencies.html">source.dependencies package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source.routes.html">source.routes package</a></li>
 <li class="toctree-l4"><a class="reference internal" href="source.schemas.html">source.schemas package</a></li>
 </ul>
@@ -102,11 +103,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>email</strong> (<em>str</em>) – Email to be checked.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>HTTPException</strong> – If email is already registered in the service.</p>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If email is already registered in the service.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -121,7 +122,7 @@
 <li><p><strong>email</strong> (<em>str</em>) – Email of the customer.</p></li>
 <li><p><strong>is_active</strong> (<em>bool</em>) – Customer status: True if is active, False otherwise.</p></li>
 <li><p><strong>message</strong> (<em>str</em>) – Message to pass if the customer is not available.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -131,7 +132,7 @@
 <dd class="field-odd"><p><a class="reference internal" href="source.database.html#source.database.models.Customer" title="source.database.models.Customer">Customer</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>HTTPException</strong> – If the customer is not available.</p>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If the customer is not available.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -144,7 +145,7 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>email</strong> (<em>str</em>) – Email of the customer.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -154,7 +155,7 @@
 <dd class="field-odd"><p><a class="reference internal" href="source.database.html#source.database.models.Customer" title="source.database.models.Customer">Customer</a></p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>HTTPException</strong> – If there no customer associated to the email in the service.</p>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If there no customer associated to the email in the service.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -172,7 +173,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>name</strong> (<em>str</em>) – Name of the customer.</p></li>
 <li><p><strong>email</strong> (<em>str</em>) – Email of the customer</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 </dl>
@@ -187,7 +188,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>customer</strong> (<a class="reference internal" href="source.database.html#source.database.models.Customer" title="source.database.models.Customer"><em>Customer</em></a>) – Customer associated with the event.</p></li>
 <li><p><strong>type</strong> (<em>str</em>) – Type of the event.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 </dl>
@@ -202,7 +203,7 @@
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>customer</strong> (<a class="reference internal" href="source.database.html#source.database.models.Customer" title="source.database.models.Customer"><em>Customer</em></a>) – Customer associated with the event.</p></li>
 <li><p><strong>status</strong> (<em>bool</em>) – Customer status: True if is active, False otherwise.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 </dl>
@@ -214,7 +215,7 @@
 <dd><p>Get the event list of the service.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p>
+<dd class="field-odd"><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>List of all events stored in the service.</p>
@@ -237,11 +238,11 @@
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>form_data</strong> (<em>OAuth2PasswordRequestForm</em>) – User’s username (email) and password.</p></li>
-<li><p><strong>database_session</strong> (<em>Session</em>) – Service database session.</p></li>
+<li><p><strong>database_session</strong> (<em>sqlalchemy.orm.session.Session</em>) – Service database session.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>HTTPException</strong> – If Email and/or password are incorrect.</p>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If Email and/or password are incorrect.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -254,7 +255,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="source.database.html" class="btn btn-neutral float-left" title="source.database package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="source.routes.html" class="btn btn-neutral float-right" title="source.routes package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="source.dependencies.html" class="btn btn-neutral float-right" title="source.dependencies package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
