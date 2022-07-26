@@ -8,6 +8,8 @@ from sqlalchemy.orm import Session
 from source.database.models import Customer
 
 
+# TODO remove database session as a parameter from all objects
+# Use a context manager where necessary and mock its engine in the tests
 def check_email_availability(email: str, database_session: Session) -> None:
     """
     Check if email is available to store a new customer in the service.
@@ -16,12 +18,12 @@ def check_email_availability(email: str, database_session: Session) -> None:
     ----------
     email : str
         Email to be checked.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If email is already registered in the service.
 
     """
@@ -40,7 +42,7 @@ def get_customer_by_email(email: str, database_session: Session) -> Customer:
     ----------
     email : str
         Email of the customer.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     Returns
@@ -50,7 +52,7 @@ def get_customer_by_email(email: str, database_session: Session) -> Customer:
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If there no customer associated to the email in the service.
 
     """
@@ -79,7 +81,7 @@ def get_customer_available(
         Customer status: True if is active, False otherwise.
     message : str
         Message to pass if the customer is not available.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     Returns
@@ -89,7 +91,7 @@ def get_customer_available(
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If the customer is not available.
 
     """

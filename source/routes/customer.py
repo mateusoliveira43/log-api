@@ -39,9 +39,9 @@ async def create_customer(
 
     Parameters
     ----------
-    customer : CustomerForm, optional
+    customer : CustomerForm
         User's email and password, by default Depends(CustomerForm.form)
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns
@@ -76,9 +76,9 @@ async def deactivate_customer(
 
     Parameters
     ----------
-    email : EmailStr, optional
+    email : pydantic.networks.EmailStr
         User's email, by default Form(...)
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns
@@ -114,9 +114,9 @@ async def activate_customer(
 
     Parameters
     ----------
-    email : EmailStr, optional
+    email : pydantic.networks.EmailStr
         User's email, by default Form(...)
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns

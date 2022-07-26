@@ -1,10 +1,15 @@
+"""Test customers route."""
+
 from fastapi import status
 
 from tests.utils import ClientForTest
 
 
 class TestCustomerRoute(ClientForTest):
+    # noqa: D101 pylint: disable=missing-class-docstring
+
     def test_create_route(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("customer-create"),
             data={"email": "test@email.com", "name": "test"},
@@ -13,6 +18,7 @@ class TestCustomerRoute(ClientForTest):
         assert response.json()["detail"] == "Customer registered successfully."
 
     def test_create_duplicate_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         test_email = "test2@email.com"
         self.test_client.post(
             self.api.url_path_for("customer-create"),
@@ -30,6 +36,7 @@ class TestCustomerRoute(ClientForTest):
 
     # TODO parametrize
     def test_create_email_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("customer-create"),
             data={"email": "", "name": "test"},
@@ -39,6 +46,7 @@ class TestCustomerRoute(ClientForTest):
 
     # TODO parametrize
     def test_create_password_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("customer-create"),
             data={"email": "test@email.com", "name": ""},
@@ -47,6 +55,7 @@ class TestCustomerRoute(ClientForTest):
         assert response.json()["detail"][0]["msg"] == "field required"
 
     def test_deactivate_route(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         self.test_client.post(
             self.api.url_path_for("customer-create"),
             data={"email": "test3@email.com", "name": "test"},
@@ -61,6 +70,7 @@ class TestCustomerRoute(ClientForTest):
         )
 
     def test_deactivate_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         test_email = "test4@email.com"
         self.test_client.post(
             self.api.url_path_for("customer-create"),
@@ -81,6 +91,7 @@ class TestCustomerRoute(ClientForTest):
         )
 
     def test_activate_route(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         self.test_client.post(
             self.api.url_path_for("customer-create"),
             data={"email": "test5@email.com", "name": "test"},
@@ -97,6 +108,7 @@ class TestCustomerRoute(ClientForTest):
         assert response.json()["detail"] == "Customer activated successfully."
 
     def test_activate_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         test_email = "test6@email.com"
         self.test_client.post(
             self.api.url_path_for("customer-create"),

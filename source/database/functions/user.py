@@ -20,12 +20,12 @@ def authenticate_user(
     ----------
     form_data : OAuth2PasswordRequestForm
         User's username (email) and password.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If Email and/or password are incorrect.
 
     """

@@ -25,6 +25,20 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.githubpages",
 ]
+nitpick_ignore = [
+    ("py:class", "datetime.datetime"),
+    ("py:class", "sqlalchemy.orm.decl_api.Base"),
+    ("py:class", "sqlalchemy.orm.session.Session"),
+    ("py:class", "fastapi.security.oauth2.OAuth2PasswordRequestForm"),
+    ("py:class", "OAuth2PasswordRequestForm"),
+    ("py:class", "pydantic.main.BaseModel"),
+    ("py:class", "pydantic.networks.EmailStr"),
+    ("py:class", "constr"),
+    ("py:class", "source.schemas.customer.ConstrainedStrValue"),
+    ("py:class", "source.schemas.event.ConstrainedStrValue"),
+    ("py:class", "source.schemas.user.ConstrainedStrValue"),
+    ("py:exc", "fastapi.HTTPException"),
+]
 
 
 # -- Options for HTML output -------------------------------------------------

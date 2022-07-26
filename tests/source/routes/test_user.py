@@ -1,11 +1,16 @@
+"""Test user route."""
+
 from fastapi import status
 
 from tests.utils import ClientForTest
 
 
 class TestUserRoute(ClientForTest):
+    # noqa: D101 pylint: disable=missing-class-docstring
     # TODO separate tests by responsibility
+
     def test_create_route(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         test_email = "test@email.com"
         response = self.test_client.post(
             self.api.url_path_for("user-create"),
@@ -18,6 +23,7 @@ class TestUserRoute(ClientForTest):
         )
 
     def test_create_duplicate_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         test_email = "test2@email.com"
         self.test_client.post(
             self.api.url_path_for("user-create"),
@@ -35,6 +41,7 @@ class TestUserRoute(ClientForTest):
 
     # TODO parametrize
     def test_create_email_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("user-create"),
             data={"email": "", "password": "password"},
@@ -44,6 +51,7 @@ class TestUserRoute(ClientForTest):
 
     # TODO parametrize
     def test_create_password_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("user-create"),
             data={"email": "test@email.com", "password": ""},
@@ -53,6 +61,7 @@ class TestUserRoute(ClientForTest):
 
     # TODO mock decouple call
     def test_token_route(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         self.test_client.post(
             self.api.url_path_for("user-create"),
             data={"email": "test_token@email.com", "password": "123456"},
@@ -66,6 +75,7 @@ class TestUserRoute(ClientForTest):
 
     # TODO parametrize
     def test_token_email_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("user-token"),
             data={"username": "", "password": "123456"},
@@ -75,6 +85,7 @@ class TestUserRoute(ClientForTest):
 
     # TODO parametrize
     def test_token_password_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("user-token"),
             data={"username": "test@email.com", "password": ""},
@@ -83,6 +94,7 @@ class TestUserRoute(ClientForTest):
         assert response.json()["detail"][0]["msg"] == "field required"
 
     def test_token_authentication_error(self) -> None:
+        # noqa: D102 pylint: disable=missing-function-docstring
         response = self.test_client.post(
             self.api.url_path_for("user-token"),
             data={"username": "test@email.com", "password": "not_right"},

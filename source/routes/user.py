@@ -7,14 +7,13 @@ from sqlalchemy.orm import Session
 from source.database.functions.user import authenticate_user
 from source.database.models import User
 from source.dependencies.authentication import (
-    TOKEN_URL,
-    USER_URL,
     create_authentication_token,
     create_hashed_password,
 )
 from source.dependencies.database import get_database_session
 from source.schemas.message import Message
 from source.schemas.user import Token, UserForm
+from source.settings import TOKEN_URL, USER_URL
 
 router = APIRouter(
     prefix=USER_URL,
@@ -38,9 +37,9 @@ async def create_user(
 
     Parameters
     ----------
-    user : UserForm, optional
+    user : UserForm
         User's email and password, by default Depends(UserForm.form)
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns
@@ -50,7 +49,7 @@ async def create_user(
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If email is already registered.
 
     """
@@ -85,9 +84,9 @@ async def create_user_token(
 
     Parameters
     ----------
-    user : OAuth2PasswordRequestForm, optional
+    user : OAuth2PasswordRequestForm
         User's username (email) and password, by default Depends()
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns

@@ -22,7 +22,7 @@ def add_creation_event(
         Name of the customer.
     email : str
         Email of the customer
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     """
@@ -51,7 +51,7 @@ def add_status_event(
         Customer associated with the event.
     status : bool
         Customer status: True if is active, False otherwise.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     """
@@ -76,7 +76,7 @@ def add_custom_event(
         Customer associated with the event.
     type_ : str
         Type of the event.
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     """
@@ -92,7 +92,7 @@ def get_event_list(
 
     Parameters
     ----------
-    database_session : Session
+    database_session : sqlalchemy.orm.session.Session
         Service database session.
 
     Returns

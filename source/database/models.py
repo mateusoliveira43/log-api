@@ -18,7 +18,7 @@ CHARACTER_LIMIT = 255
 LogApiBase = declarative_base()
 
 
-class User(LogApiBase):
+class User(LogApiBase):  # type: ignore
     """ORM model for user table."""
 
     __tablename__ = "USER"
@@ -27,7 +27,7 @@ class User(LogApiBase):
     hashed_password = Column("USER_HASHED_PASSWORD", String)
 
 
-class Customer(LogApiBase):
+class Customer(LogApiBase):  # type: ignore
     """ORM model for customer table."""
 
     __tablename__ = "CUSTOMER"
@@ -39,7 +39,7 @@ class Customer(LogApiBase):
     events = relationship("Event", backref="customer")
 
 
-class Event(LogApiBase):
+class Event(LogApiBase):  # type: ignore
     """ORM model for event table."""
 
     __tablename__ = "EVENT"

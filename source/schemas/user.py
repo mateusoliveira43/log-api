@@ -17,22 +17,24 @@ class UserForm(BaseModel):
     """User form schema."""
 
     email: EmailStr
-    password: constr(min_length=6, max_length=CHARACTER_LIMIT)
+    password: constr(min_length=6, max_length=CHARACTER_LIMIT)  # type: ignore
 
     @classmethod
     def form(
         cls,
         email: EmailStr = Form(...),
-        password: constr(min_length=6, max_length=CHARACTER_LIMIT) = Form(...),
+        password: constr(  # type: ignore
+            min_length=6, max_length=CHARACTER_LIMIT
+        ) = Form(...),
     ) -> UserForm:
         """
         Generate form for endpoints.
 
         Parameters
         ----------
-        email : EmailStr, optional
+        email : pydantic.networks.EmailStr
             User email, by default Form(...)
-        password : constr, optional
+        password : constr
             User password, by default Form(...)
 
         Returns

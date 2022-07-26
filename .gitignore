@@ -131,6 +131,3 @@ dmypy.json
 # Documentation
 docs/modules
 public/
-
-# Tests
-tests/test.db

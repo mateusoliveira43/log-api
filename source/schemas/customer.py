@@ -16,13 +16,15 @@ from source.database.models import CHARACTER_LIMIT
 class CustomerForm(BaseModel):
     """Customer form schema."""
 
-    name: constr(min_length=1, max_length=CHARACTER_LIMIT)
+    name: constr(min_length=1, max_length=CHARACTER_LIMIT)  # type: ignore
     email: EmailStr
 
     @classmethod
     def form(
         cls,
-        name: constr(min_length=1, max_length=CHARACTER_LIMIT) = Form(...),
+        name: constr(  # type: ignore
+            min_length=1, max_length=CHARACTER_LIMIT
+        ) = Form(...),
         email: EmailStr = Form(...),
     ) -> CustomerForm:
         """
@@ -30,9 +32,9 @@ class CustomerForm(BaseModel):
 
         Parameters
         ----------
-        name : constr, optional
+        name : constr
             Customer name, by default Form(...)
-        email : EmailStr, optional
+        email : pydantic.networks.EmailStr
             Customer email, by default Form(...)
 
         Returns

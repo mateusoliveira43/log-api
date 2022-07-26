@@ -19,22 +19,25 @@ class EventForm(BaseModel):
     """Event form schema."""
 
     email: EmailStr
-    type_: constr(min_length=1, max_length=CHARACTER_LIMIT)
+    type_: constr(min_length=1, max_length=CHARACTER_LIMIT)  # type: ignore
 
+    # TODO automate
     @classmethod
     def form(
         cls,
         email: EmailStr = Form(...),
-        type_: constr(min_length=1, max_length=CHARACTER_LIMIT) = Form(...),
+        type_: constr(  # type: ignore
+            min_length=1, max_length=CHARACTER_LIMIT
+        ) = Form(...),
     ) -> EventForm:
         """
         Generate form for endpoints.
 
         Parameters
         ----------
-        email : EmailStr, optional
+        email : pydantic.networks.EmailStr
             Customer associated to event email, by default Form(...)
-        type_ : constr, optional
+        type_ : constr
             Type of the event, by default Form(...)
 
         Returns
@@ -50,5 +53,5 @@ class EventModel(BaseModel):
     """Event schema."""
 
     customer: EmailStr
-    type_: constr(min_length=1, max_length=CHARACTER_LIMIT)
+    type_: constr(min_length=1, max_length=CHARACTER_LIMIT)  # type: ignore
     registered_at: datetime

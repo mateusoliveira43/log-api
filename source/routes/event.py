@@ -34,9 +34,9 @@ async def create_event(
 
     Parameters
     ----------
-    event : EventForm, optional
+    event : EventForm
         Customer email and event type, by default Depends(EventForm.form)
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns
@@ -71,7 +71,7 @@ async def list_event(
 
     Parameters
     ----------
-    database_session : Session, optional
+    database_session : sqlalchemy.orm.session.Session
         Service database session, by default Depends(get_database_session)
 
     Returns

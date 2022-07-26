@@ -7,8 +7,6 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron:  '0 0 * * 1' # Every Monday at 00:00 UTC
 
 jobs:
   python-check:
@@ -32,7 +30,9 @@ jobs:
           cache-dependency-path: "requirements/*.txt"
 
       - name: Install Python dependencies
+        # TODO fix problem
         run: |
+          pip install coverage==6.4.1
           pip install -r requirements/prod.txt
           pip install -r requirements/dev.txt
 
@@ -60,7 +60,7 @@ jobs:
 
       - name: Security vulnerability scan
         run: |
-          bandit --recursive scripts
+          bandit --recursive source
           safety check --file requirements/prod.txt --full-report
           safety check --file requirements/dev.txt --full-report
 

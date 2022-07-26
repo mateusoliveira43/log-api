@@ -1,6 +1,6 @@
 """Service database session."""
 
-from typing import Iterator
+from typing import Generator
 
 from sqlalchemy.engine import create_engine
 from sqlalchemy.exc import SQLAlchemyError
@@ -10,13 +10,13 @@ from uvicorn.config import logger
 from source.settings import get_database_settings
 
 
-def get_database_session() -> Iterator[Session]:
+def get_database_session() -> Generator[Session, None, None]:
     """
     Get service database session.
 
     Yields
     ------
-    Iterator[Session]
+    Generator[sqlalchemy.orm.session.Session, None, None]
         Service database session.
 
     """

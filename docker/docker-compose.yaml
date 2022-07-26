@@ -9,6 +9,7 @@ services:
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
     volumes:
+      - ~/.postgres/log_api/postgresql/data:/var/lib/postgresql/data
       - ./database/tables.sql:/docker-entrypoint-initdb.d/tables.sql
 
   log-api:
@@ -20,7 +21,13 @@ services:
     hostname: docker
     working_dir: ${WORK_DIR}
     entrypoint: ["poetry", "run"]
-    command: ["uvicorn", "source.__main__:log_api", "--host", "${API_HOST}", "--port", "${API_PORT}", "--reload"]
+    command: [
+      "uvicorn",
+      "source.__main__:log_api",
+      "--host", "${API_HOST}",
+      "--port", "${API_PORT}",
+      "--reload"
+    ]
     ports:
       - ${API_PORT}:${API_PORT}
     build:

@@ -145,7 +145,7 @@ File format configuration in [`.editorconfig`](.editorconfig) file.
 
 To check common security issues in Python code, run
 ```
-bandit --recursive scripts
+bandit --recursive source
 ```
 
 To check known security vulnerabilities in Python dependencies, run

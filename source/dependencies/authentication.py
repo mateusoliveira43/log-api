@@ -33,7 +33,7 @@ def create_hashed_password(password: str) -> str:
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If hashed password could not be created.
 
     """
@@ -64,7 +64,7 @@ def check_password(password: str, hashed_password: str) -> bool:
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If password and hashed could not be checked.
 
     """
@@ -116,15 +116,15 @@ def check_authentication(
 
     Parameters
     ----------
-    token : str, optional
+    token : str
         Token in authorization header, by default
         Depends( OAuth2PasswordBearer(tokenUrl=f"{USER_URL}{TOKEN_URL}") )
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If token is invalid.
-    HTTPException
+    fastapi.HTTPException
         If token is expired.
 
     """
