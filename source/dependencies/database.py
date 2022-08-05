@@ -10,6 +10,7 @@ from uvicorn.config import logger
 from source.settings import get_database_settings
 
 
+# TODO remove this
 def get_database_session() -> Generator[Session, None, None]:
     """
     Get service database session.
