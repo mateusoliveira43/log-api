@@ -8,3 +8,4 @@ For simplicity, the following features where not added to the service:
 - There is no ``DELETE`` route to delete a existing customer.
 - There are no filters when listing the events.
 - when receiving a lot of simultaneous data through the endpoints, store them and only do 1 commit instead of several.
+- Add monitoring service to check API health.

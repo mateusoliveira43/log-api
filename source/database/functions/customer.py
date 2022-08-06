@@ -3,14 +3,12 @@
 from typing import Optional
 
 from fastapi import HTTPException, status
-from sqlalchemy.orm import Session
 
 from source.database.models import Customer
+from source.dependencies.database import get_database_session
 
 
-# TODO remove database session as a parameter from all objects
-# Use a context manager where necessary and mock its engine in the tests
-def check_email_availability(email: str, database_session: Session) -> None:
+def check_email_availability(email: str) -> None:
     """
     Check if email is available to store a new customer in the service.
 
@@ -18,8 +16,6 @@ def check_email_availability(email: str, database_session: Session) -> None:
     ----------
     email : str
         Email to be checked.
-    database_session : sqlalchemy.orm.session.Session
-        Service database session.
 
     Raises
     ------
@@ -27,14 +23,15 @@ def check_email_availability(email: str, database_session: Session) -> None:
         If email is already registered in the service.
 
     """
-    if database_session.query(Customer).filter_by(email=email).first():
-        raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail=f"Email {email} is already registered.",
-        )
+    with get_database_session() as database_session:
+        if database_session.query(Customer).filter_by(email=email).first():
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail=f"Email {email} is already registered.",
+            )
 
 
-def get_customer_by_email(email: str, database_session: Session) -> Customer:
+def get_customer_by_email(email: str) -> Customer:
     """
     Get customer by email.
 
@@ -42,8 +39,6 @@ def get_customer_by_email(email: str, database_session: Session) -> Customer:
     ----------
     email : str
         Email of the customer.
-    database_session : sqlalchemy.orm.session.Session
-        Service database session.
 
     Returns
     -------
@@ -56,9 +51,10 @@ def get_customer_by_email(email: str, database_session: Session) -> Customer:
         If there no customer associated to the email in the service.
 
     """
-    customer: Optional[Customer] = (
-        database_session.query(Customer).filter_by(email=email).first()
-    )
+    with get_database_session() as database_session:
+        customer: Optional[Customer] = (
+            database_session.query(Customer).filter_by(email=email).first()
+        )
     if not customer:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
@@ -68,7 +64,7 @@ def get_customer_by_email(email: str, database_session: Session) -> Customer:
 
 
 def get_customer_available(
-    email: str, is_active: bool, message: str, database_session: Session
+    email: str, is_active: bool, message: str
 ) -> Customer:
     """
     Get customer available by status.
@@ -81,8 +77,6 @@ def get_customer_available(
         Customer status: True if is active, False otherwise.
     message : str
         Message to pass if the customer is not available.
-    database_session : sqlalchemy.orm.session.Session
-        Service database session.
 
     Returns
     -------
@@ -95,9 +89,7 @@ def get_customer_available(
         If the customer is not available.
 
     """
-    customer = get_customer_by_email(
-        email=email, database_session=database_session
-    )
+    customer = get_customer_by_email(email=email)
     if customer.is_active != is_active:
         raise HTTPException(
             status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,

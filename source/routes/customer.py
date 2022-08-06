@@ -2,7 +2,6 @@
 
 from fastapi import APIRouter, Depends, Form, status
 from pydantic import EmailStr  # pylint: disable=no-name-in-module
-from sqlalchemy.orm import Session
 
 from source.database.functions.customer import (
     check_email_availability,
@@ -13,7 +12,6 @@ from source.database.functions.event import (
     add_status_event,
 )
 from source.dependencies.authentication import check_authentication
-from source.dependencies.database import get_database_session
 from source.schemas.customer import CustomerForm
 from source.schemas.message import Message
 
@@ -31,8 +29,7 @@ router = APIRouter(
     response_model=Message,
 )
 async def create_customer(
-    customer: CustomerForm = Depends(CustomerForm.form),
-    database_session: Session = Depends(get_database_session),
+    customer: CustomerForm = Depends(CustomerForm.form),  # type: ignore
 ) -> Message:
     """
     Create a customer endpoint.
@@ -41,8 +38,6 @@ async def create_customer(
     ----------
     customer : CustomerForm
         User's email and password, by default Depends(CustomerForm.form)
-    database_session : sqlalchemy.orm.session.Session
-        Service database session, by default Depends(get_database_session)
 
     Returns
     -------
@@ -50,13 +45,10 @@ async def create_customer(
         Success message.
 
     """
-    check_email_availability(
-        email=customer.email, database_session=database_session
-    )
+    check_email_availability(email=customer.email)
     add_creation_event(
         name=customer.name,
         email=customer.email,
-        database_session=database_session,
     )
     return Message(detail="Customer registered successfully.")
 
@@ -69,7 +61,6 @@ async def create_customer(
 )
 async def deactivate_customer(
     email: EmailStr = Form(...),
-    database_session: Session = Depends(get_database_session),
 ) -> Message:
     """
     Deactivate a customer endpoint.
@@ -78,8 +69,6 @@ async def deactivate_customer(
     ----------
     email : pydantic.networks.EmailStr
         User's email, by default Form(...)
-    database_session : sqlalchemy.orm.session.Session
-        Service database session, by default Depends(get_database_session)
 
     Returns
     -------
@@ -91,11 +80,8 @@ async def deactivate_customer(
         email=email,
         is_active=True,
         message=f"Customer with email {email} is already deactivated.",
-        database_session=database_session,
     )
-    add_status_event(
-        customer=customer, status=False, database_session=database_session
-    )
+    add_status_event(customer=customer, status=False)
     return Message(detail="Customer deactivated successfully.")
 
 
@@ -107,7 +93,6 @@ async def deactivate_customer(
 )
 async def activate_customer(
     email: EmailStr = Form(...),
-    database_session: Session = Depends(get_database_session),
 ) -> Message:
     """
     Activate a customer endpoint.
@@ -116,8 +101,6 @@ async def activate_customer(
     ----------
     email : pydantic.networks.EmailStr
         User's email, by default Form(...)
-    database_session : sqlalchemy.orm.session.Session
-        Service database session, by default Depends(get_database_session)
 
     Returns
     -------
@@ -129,9 +112,6 @@ async def activate_customer(
         email=email,
         is_active=False,
         message=f"Customer with email {email} is already activated.",
-        database_session=database_session,
     )
-    add_status_event(
-        customer=customer, status=True, database_session=database_session
-    )
+    add_status_event(customer=customer, status=True)
     return Message(detail="Customer activated successfully.")

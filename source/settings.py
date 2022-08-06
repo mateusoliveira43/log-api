@@ -5,10 +5,8 @@ from decouple import config
 DAY_IN_MINUTES = 24 * 60
 USER_URL = "/user"
 TOKEN_URL = "/token"  # nosec
-# TODO mock library
-TOKEN_SECRET_KEY = config("TOKEN_SECRET_KEY", default="For_test_run")
-# TODO use .env
-TOKEN_ALGORITHM = "HS256"  # nosec
+TOKEN_SECRET_KEY = config("TOKEN_SECRET_KEY")
+TOKEN_ALGORITHM = config("TOKEN_ALGORITHM")
 TOKEN_EXPIRATION_TIME = DAY_IN_MINUTES
 
 

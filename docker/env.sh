@@ -10,6 +10,7 @@ if ! test -f $FILE; then
     echo "USER_NAME=$USER_NAME" >> $FILE
     echo "WORK_DIR=/home/$USER_NAME/log-api" >> $FILE
     echo "TOKEN_SECRET_KEY=$(openssl rand -hex 32)" >> $FILE
+    echo "TOKEN_ALGORITHM=HS256" >> $FILE
     echo "API_HOST=0.0.0.0" >> $FILE
     echo "API_PORT=3000" >> $FILE
     echo "DATABASE_HOST=log-database" >> $FILE

@@ -9,7 +9,7 @@
 
 Technical challenge for selective process.
 
-Since the repository is private, it's documentation could not be deployed to GitHub pages, but the structure to do it is all set in [`.github/workflows/cd.yml`](.github/workflows/cd.yml) file.
+Check the project's documentation [here](https://mateusoliveira43.github.io/log-api/). Continuous deploy (CD) configuration in [`.github/workflows/cd.yml`](.github/workflows/cd.yml) file.
 
 # Requirements
 

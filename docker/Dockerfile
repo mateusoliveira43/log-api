@@ -1,4 +1,4 @@
-FROM python:3.10.4-bullseye as setup
+FROM python:3.10.5-bullseye
 
 ARG GROUP_ID
 ARG USER_ID
@@ -14,15 +14,13 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PATH=/home/$USER_NAME/.local/bin:$PATH
 
 RUN groupadd --gid $GROUP_ID $USER_NAME \
-    && useradd --uid $USER_ID --gid $GROUP_ID --create-home $USER_NAME
+    && useradd --uid $USER_ID --gid $GROUP_ID --create-home $USER_NAME \
+    && runuser --user $USER_NAME -- mkdir $WORK_DIR
 USER $USER_NAME
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python \
-    && mkdir $WORK_DIR
 WORKDIR $WORK_DIR
 
-FROM setup as install
-
 COPY pyproject.toml poetry.lock ./
-RUN poetry install
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN curl -sSL https://install.python-poetry.org | python - \
+    && poetry install
