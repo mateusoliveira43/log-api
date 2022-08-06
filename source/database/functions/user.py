@@ -25,7 +25,7 @@ def register_user(user: UserForm) -> None:
 
     Raises
     ------
-    HTTPException
+    fastapi.HTTPException
         If email is already registered.
 
     """

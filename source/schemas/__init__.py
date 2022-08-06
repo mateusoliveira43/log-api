@@ -13,12 +13,12 @@ def create_form(cls: Type[BaseModel]) -> Type[BaseModel]:
 
     Parameters
     ----------
-    cls : Type[BaseModel]
+    cls : Type[pydantic.main.BaseModel]
         pydantic.BaseModel class to be decorated.
 
     Returns
     -------
-    Type[BaseModel]
+    Type[pydantic.main.BaseModel]
         Decorated class.
 
     """
@@ -40,7 +40,7 @@ def create_form(cls: Type[BaseModel]) -> Type[BaseModel]:
 
         Returns
         -------
-        BaseModel
+        pydantic.main.BaseModel
             Form for endpoint.
 
         """

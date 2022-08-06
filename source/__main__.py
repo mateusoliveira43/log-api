@@ -26,14 +26,14 @@ async def handle_sqlalchemy_exceptions(
 
     Parameters
     ----------
-    request : Request
+    request : starlette.requests.Request
         API request.
-    exc : SQLAlchemyError
+    exc : sqlalchemy.exc.SQLAlchemyError
         Raised Exception from API.
 
     Returns
     -------
-    JSONResponse
+    starlette.responses.JSONResponse
         Handled exception.
 
     """
