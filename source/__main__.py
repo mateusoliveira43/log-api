@@ -1,9 +1,11 @@
 """Log API."""
 
-from fastapi import APIRouter, FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+from sqlalchemy.exc import SQLAlchemyError
 
 from source import __version__
-from source.routes import customer, event, user
+from source.routes import router
 
 log_api = FastAPI(
     title="Log API's endpoints documentation",
@@ -14,10 +16,31 @@ log_api = FastAPI(
     redocs_url=None,
 )
 
-api_router = APIRouter()
 
-api_router.include_router(user.router)
-api_router.include_router(customer.router)
-api_router.include_router(event.router)
+@log_api.exception_handler(SQLAlchemyError)
+async def handle_sqlalchemy_exceptions(
+    request: Request, exc: SQLAlchemyError  # pylint: disable=unused-argument
+) -> JSONResponse:
+    """
+    Handle SQLAlchemy exceptions.
 
-log_api.include_router(api_router)
+    Parameters
+    ----------
+    request : Request
+        API request.
+    exc : SQLAlchemyError
+        Raised Exception from API.
+
+    Returns
+    -------
+    JSONResponse
+        Handled exception.
+
+    """
+    return JSONResponse(
+        status_code=400,
+        content={"detail": str(exc.orig).strip()},
+    )
+
+
+log_api.include_router(router)

@@ -1,9 +1,6 @@
 """User pydantic schemas."""
 # pylint: disable=too-few-public-methods
 
-from __future__ import annotations
-
-from fastapi import Form
 from pydantic import (  # pylint: disable=no-name-in-module
     BaseModel,
     EmailStr,
@@ -11,39 +8,15 @@ from pydantic import (  # pylint: disable=no-name-in-module
 )
 
 from source.database.models import CHARACTER_LIMIT
+from source.schemas import create_form
 
 
+@create_form
 class UserForm(BaseModel):
     """User form schema."""
 
     email: EmailStr
     password: constr(min_length=6, max_length=CHARACTER_LIMIT)  # type: ignore
-
-    @classmethod
-    def form(
-        cls,
-        email: EmailStr = Form(...),
-        password: constr(  # type: ignore
-            min_length=6, max_length=CHARACTER_LIMIT
-        ) = Form(...),
-    ) -> UserForm:
-        """
-        Generate form for endpoints.
-
-        Parameters
-        ----------
-        email : pydantic.networks.EmailStr
-            User email, by default Form(...)
-        password : constr
-            User password, by default Form(...)
-
-        Returns
-        -------
-        UserForm
-            Form for endpoints.
-
-        """
-        return cls(email=email, password=password)
 
 
 class JWTToken(BaseModel):
