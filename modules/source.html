@@ -51,8 +51,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-source.__main__">source.__main__ module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#module-source.settings">source.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-main-module">source.__main__ module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#source-settings-module">source.settings module</a></li>
 </ul>
 </li>
 </ul>
@@ -95,9 +95,9 @@
 <li class="toctree-l2"><a class="reference internal" href="source.database.html#subpackages">Subpackages</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="source.database.functions.html">source.database.functions package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#module-source.database.functions.customer">source.database.functions.customer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#module-source.database.functions.event">source.database.functions.event module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#module-source.database.functions.user">source.database.functions.user module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#source-database-functions-customer-module">source.database.functions.customer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#source-database-functions-event-module">source.database.functions.event module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="source.database.functions.html#source-database-functions-user-module">source.database.functions.user module</a></li>
 </ul>
 </li>
 </ul>
@@ -108,15 +108,15 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="source.dependencies.html">source.dependencies package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="source.dependencies.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source.dependencies.html#module-source.dependencies.authentication">source.dependencies.authentication module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source.dependencies.html#module-source.dependencies.database">source.dependencies.database module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.dependencies.html#source-dependencies-authentication-module">source.dependencies.authentication module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.dependencies.html#source-dependencies-database-module">source.dependencies.database module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="source.routes.html">source.routes package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="source.routes.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source.routes.html#module-source.routes.customer">source.routes.customer module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source.routes.html#module-source.routes.event">source.routes.event module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="source.routes.html#module-source.routes.user">source.routes.user module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.routes.html#source-routes-customer-module">source.routes.customer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.routes.html#source-routes-event-module">source.routes.event module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source.routes.html#source-routes-user-module">source.routes.user module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="source.schemas.html">source.schemas package</a><ul>
@@ -133,41 +133,11 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-source.__main__">
-<span id="source-main-module"></span><h2>source.__main__ module<a class="headerlink" href="#module-source.__main__" title="Permalink to this heading"></a></h2>
-<p>Log API.</p>
+<section id="source-main-module">
+<h2>source.__main__ module<a class="headerlink" href="#source-main-module" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-source.settings">
-<span id="source-settings-module"></span><h2>source.settings module<a class="headerlink" href="#module-source.settings" title="Permalink to this heading"></a></h2>
-<p>Service settings.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="source.settings.get_database_settings">
-<span class="sig-prename descclassname"><span class="pre">source.settings.</span></span><span class="sig-name descname"><span class="pre">get_database_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#source.settings.get_database_settings" title="Permalink to this definition"></a></dt>
-<dd><p>Get database settings to instantiate a SQLAlchemy engine.</p>
-<p>Database settings in the format</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dialect</span><span class="o">+</span><span class="n">driver</span><span class="p">:</span><span class="o">//</span><span class="n">username</span><span class="p">:</span><span class="n">password</span><span class="nd">@host</span><span class="p">:</span><span class="n">port</span><span class="o">/</span><span class="n">database_name</span>
-</pre></div>
-</div>
-<p>where:</p>
-<ul class="simple">
-<li><p>dialect: SQLAlchemy dialect, in lowercase</p></li>
-<li><p>driver: Python Database API Specification (DBAPI), in lowercase</p></li>
-<li><p>username: username of the database</p></li>
-<li><p>password: password of the username</p></li>
-<li><p>host: host of the database</p></li>
-<li><p>port: port of the database</p></li>
-<li><p>database_name: name of the database</p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Database settings.</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
+<section id="source-settings-module">
+<h2>source.settings module<a class="headerlink" href="#source-settings-module" title="Permalink to this heading"></a></h2>
 </section>
 </section>
 
