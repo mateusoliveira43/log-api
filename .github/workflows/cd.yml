@@ -25,6 +25,9 @@ jobs:
           pip install -r requirements/prod.txt
           pip install -r requirements/dev.txt
 
+      - name: Setup environment
+        run: ./docker/env.sh
+
       - name: Generate documentation
         run: |
           sphinx-apidoc --module-first --private --output-dir docs/modules source
