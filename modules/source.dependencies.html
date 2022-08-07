@@ -51,8 +51,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="source.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source.html#source-main-module">source.__main__ module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="source.html#source-settings-module">source.settings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html#module-source.__main__">source.__main__ module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="source.html#module-source.settings">source.settings module</a></li>
 </ul>
 </li>
 </ul>
@@ -91,11 +91,105 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="source-dependencies-authentication-module">
-<h2>source.dependencies.authentication module<a class="headerlink" href="#source-dependencies-authentication-module" title="Permalink to this heading"></a></h2>
+<section id="module-source.dependencies.authentication">
+<span id="source-dependencies-authentication-module"></span><h2>source.dependencies.authentication module<a class="headerlink" href="#module-source.dependencies.authentication" title="Permalink to this heading"></a></h2>
+<p>Authentication related functions.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="source.dependencies.authentication.check_authentication">
+<span class="sig-prename descclassname"><span class="pre">source.dependencies.authentication.</span></span><span class="sig-name descname"><span class="pre">check_authentication</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">Depends(OAuth2PasswordBearer)</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#source.dependencies.authentication.check_authentication" title="Permalink to this definition"></a></dt>
+<dd><p>Check if user has valid authentication token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> (<em>str</em>) – Token in authorization header, by default
+Depends( OAuth2PasswordBearer(tokenUrl=f”{USER_URL}{TOKEN_URL}”) )</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>fastapi.HTTPException</strong> – If token is invalid.</p></li>
+<li><p><strong>fastapi.HTTPException</strong> – If token is expired.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="source.dependencies.authentication.check_password">
+<span class="sig-prename descclassname"><span class="pre">source.dependencies.authentication.</span></span><span class="sig-name descname"><span class="pre">check_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed_password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#source.dependencies.authentication.check_password" title="Permalink to this definition"></a></dt>
+<dd><p>Check if password is correct.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>password</strong> (<em>str</em>) – Plain password.</p></li>
+<li><p><strong>hashed_password</strong> (<em>str</em>) – Hashed password.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if password is correct, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If password and hashed could not be checked.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="source.dependencies.authentication.create_authentication_token">
+<span class="sig-prename descclassname"><span class="pre">source.dependencies.authentication.</span></span><span class="sig-name descname"><span class="pre">create_authentication_token</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="source.schemas.html#source.schemas.user.Token" title="source.schemas.user.Token"><span class="pre">Token</span></a></span></span><a class="headerlink" href="#source.dependencies.authentication.create_authentication_token" title="Permalink to this definition"></a></dt>
+<dd><p>Create authentication token to user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>username</strong> (<em>str</em>) – User’s username (email).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Authentication token.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="source.schemas.html#source.schemas.user.Token" title="source.schemas.user.Token">Token</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="source.dependencies.authentication.create_hashed_password">
+<span class="sig-prename descclassname"><span class="pre">source.dependencies.authentication.</span></span><span class="sig-name descname"><span class="pre">create_hashed_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#source.dependencies.authentication.create_hashed_password" title="Permalink to this definition"></a></dt>
+<dd><p>Create hashed password to be stored in the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>password</strong> (<em>str</em>) – Plain password.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Hashed password.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>fastapi.HTTPException</strong> – If hashed password could not be created.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
-<section id="source-dependencies-database-module">
-<h2>source.dependencies.database module<a class="headerlink" href="#source-dependencies-database-module" title="Permalink to this heading"></a></h2>
+<section id="module-source.dependencies.database">
+<span id="source-dependencies-database-module"></span><h2>source.dependencies.database module<a class="headerlink" href="#module-source.dependencies.database" title="Permalink to this heading"></a></h2>
+<p>Service database session.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="source.dependencies.database.get_database_session">
+<span class="sig-prename descclassname"><span class="pre">source.dependencies.database.</span></span><span class="sig-name descname"><span class="pre">get_database_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Session</span></span></span><a class="headerlink" href="#source.dependencies.database.get_database_session" title="Permalink to this definition"></a></dt>
+<dd><p>Get service database session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Service database session.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>sqlalchemy.orm.session.Session</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 
