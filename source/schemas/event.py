@@ -10,11 +10,11 @@ from pydantic import (  # pylint: disable=no-name-in-module
 )
 
 from source.database.models import CHARACTER_LIMIT
-from source.schemas import create_form
+from source.schemas import BaseFormModel
 
 
-@create_form
-class EventForm(BaseModel):
+# @create_form
+class EventForm(BaseFormModel):
     """Event form schema."""
 
     email: EmailStr

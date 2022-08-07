@@ -24,7 +24,7 @@ router = APIRouter(
     response_model=Message,
 )
 async def create_event(
-    event: EventForm = Depends(EventForm.form),  # type: ignore
+    event: EventForm = Depends(EventForm.form),
 ) -> Message:
     """
     Create a event endpoint.
