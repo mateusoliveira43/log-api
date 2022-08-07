@@ -87,21 +87,23 @@
   <section id="module-source.schemas">
 <span id="source-schemas-package"></span><h1>source.schemas package<a class="headerlink" href="#module-source.schemas" title="Permalink to this heading"></a></h1>
 <p>Service pydantic schemas.</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="source.schemas.create_form">
-<span class="sig-prename descclassname"><span class="pre">source.schemas.</span></span><span class="sig-name descname"><span class="pre">create_form</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cls</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseModel</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseModel</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#source.schemas.create_form" title="Permalink to this definition"></a></dt>
-<dd><p>Create a form from a pydantic.BaseModel class.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>cls</strong> (<em>Type</em><em>[</em><em>pydantic.main.BaseModel</em><em>]</em>) – pydantic.BaseModel class to be decorated.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Decorated class.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>Type[pydantic.main.BaseModel]</p>
-</dd>
-</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="source.schemas.BaseFormModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">source.schemas.</span></span><span class="sig-name descname"><span class="pre">BaseFormModel</span></span><a class="headerlink" href="#source.schemas.BaseFormModel" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Base class for schemas with form.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="source.schemas.BaseFormModel._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#source.schemas.BaseFormModel._abc_impl" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="source.schemas.BaseFormModel.form">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">form</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#source.schemas.BaseFormModel.form" title="Permalink to this definition"></a></dt>
+<dd><p>Return form for endpoints.</p>
+<p>__init_subclass__ method overrides this method.</p>
+</dd></dl>
+
 </dd></dl>
 
 <section id="submodules">
@@ -113,7 +115,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="source.schemas.customer.CustomerForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">source.schemas.customer.</span></span><span class="sig-name descname"><span class="pre">CustomerForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedStrValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.schemas.customer.CustomerForm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#source.schemas.BaseFormModel" title="source.schemas.BaseFormModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFormModel</span></code></a></p>
 <p>Customer form schema.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="source.schemas.customer.CustomerForm._abc_impl">
@@ -153,7 +155,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="source.schemas.event.EventForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">source.schemas.event.</span></span><span class="sig-name descname"><span class="pre">EventForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedStrValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.schemas.event.EventForm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#source.schemas.BaseFormModel" title="source.schemas.BaseFormModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFormModel</span></code></a></p>
 <p>Event form schema.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="source.schemas.event.EventForm._abc_impl">
@@ -294,7 +296,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="source.schemas.user.UserForm">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">source.schemas.user.</span></span><span class="sig-name descname"><span class="pre">UserForm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">email</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">EmailStr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedStrValue</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#source.schemas.user.UserForm" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#source.schemas.BaseFormModel" title="source.schemas.BaseFormModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFormModel</span></code></a></p>
 <p>User form schema.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="source.schemas.user.UserForm._abc_impl">
