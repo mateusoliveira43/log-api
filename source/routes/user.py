@@ -23,7 +23,7 @@ router = APIRouter(
     response_model=Message,
 )
 async def create_user(
-    user: UserForm = Depends(UserForm.form),  # type: ignore
+    user: UserForm = Depends(UserForm.form),
 ) -> Message:
     """
     Create a user endpoint.

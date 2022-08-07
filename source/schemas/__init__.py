@@ -1,53 +1,51 @@
 """Service pydantic schemas."""
+# pylint: disable=too-few-public-methods
 
 import inspect
-from typing import Any, Type
+from typing import Any
 
 from fastapi import Form
 from pydantic import BaseModel  # pylint: disable=no-name-in-module
 
 
-def create_form(cls: Type[BaseModel]) -> Type[BaseModel]:
-    """
-    Create a form from a pydantic.BaseModel class.
+class BaseFormModel(BaseModel):
+    """Base class for schemas with form."""
 
-    Parameters
-    ----------
-    cls : Type[pydantic.main.BaseModel]
-        pydantic.BaseModel class to be decorated.
+    def __init_subclass__(cls) -> None:
+        """Init class that inherits from BaseModel."""
+        class_attributes = [
+            inspect.Parameter(
+                model_field.alias,
+                inspect.Parameter.POSITIONAL_ONLY,
+                default=Form(...)
+                if model_field.required
+                else Form(model_field.default),
+                annotation=model_field.outer_type_,
+            )
+            for model_field in cls.__fields__.values()
+        ]
 
-    Returns
-    -------
-    Type[pydantic.main.BaseModel]
-        Decorated class.
+        def get_form(**data: Any) -> BaseModel:
+            """
+            Generate form for endpoints.
 
-    """
-    class_attributes = [
-        inspect.Parameter(
-            model_field.alias,
-            inspect.Parameter.POSITIONAL_ONLY,
-            default=Form(...)
-            if model_field.required
-            else Form(model_field.default),
-            annotation=model_field.outer_type_,
-        )
-        for model_field in cls.__fields__.values()
-    ]
+            Returns
+            -------
+            pydantic.main.BaseModel
+                Form for endpoint.
 
-    def form(**data: Any) -> BaseModel:
+            """
+            return cls(**data)
+
+        get_form.__signature__ = inspect.signature(  # type: ignore
+            get_form
+        ).replace(parameters=class_attributes)
+        setattr(cls, "form", get_form)
+
+    @classmethod
+    def form(cls) -> None:
         """
-        Generate form for endpoints.
+        Return form for endpoints.
 
-        Returns
-        -------
-        pydantic.main.BaseModel
-            Form for endpoint.
-
+        __init_subclass__ method overrides this method.
         """
-        return cls(**data)
-
-    form.__signature__ = inspect.signature(form).replace(  # type: ignore
-        parameters=class_attributes
-    )
-    setattr(cls, "form", form)
-    return cls

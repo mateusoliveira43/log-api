@@ -29,7 +29,7 @@ router = APIRouter(
     response_model=Message,
 )
 async def create_customer(
-    customer: CustomerForm = Depends(CustomerForm.form),  # type: ignore
+    customer: CustomerForm = Depends(CustomerForm.form),
 ) -> Message:
     """
     Create a customer endpoint.

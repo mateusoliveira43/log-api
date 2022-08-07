@@ -8,11 +8,10 @@ from pydantic import (  # pylint: disable=no-name-in-module
 )
 
 from source.database.models import CHARACTER_LIMIT
-from source.schemas import create_form
+from source.schemas import BaseFormModel
 
 
-@create_form
-class UserForm(BaseModel):
+class UserForm(BaseFormModel):
     """User form schema."""
 
     email: EmailStr
